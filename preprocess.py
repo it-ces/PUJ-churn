@@ -25,7 +25,7 @@ def dummies_ohe(df_,cats):
     return df
 
 
-def std_z(nums, df_, mean, std):
+def std_z(nums, df_):
     """
     standardizing nums(numerical) variables
     """
@@ -33,8 +33,9 @@ def std_z(nums, df_, mean, std):
     binaries = is_binary(df, nums)
     for col in nums:
         if col not in binaries:
-            df[col] = (df[col] - mean)/std
+            df[col] = (df[col] - df[col].mean())/df[col].std()
     return df
+
 
 
 def Xy(df_,target):
